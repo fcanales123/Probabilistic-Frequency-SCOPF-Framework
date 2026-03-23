@@ -15,7 +15,6 @@ The source code implements:
 
 ## ⚙️ Requirements
 
-- MATLAB (tested with recent versions)
 - **MATPOWER v8.0 or later** (required)
 
 Make sure MATPOWER is installed and added to your MATLAB path:
