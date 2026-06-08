@@ -3,13 +3,6 @@ function results = run_csopf_dc(mpc, mpopt)
     if nargin < 2 || isempty(mpopt)
         mpopt = mpoption;
     end
-
-    % DC model + IPOPT as DC OPF solver
-    mpopt = mpoption(mpopt, ...
-        'model', 'DC', ...
-        'opf.dc.solver', 'MIPS', ...   % requires IPOPT package installed
-        'verbose', 2);                  % or 1/0 as you like
-
     %% INTERNAL NUMBERING
     % Convert to internal indexing (buses, gens, branches)
     % Keep same pattern as MATPOWER's opf.m

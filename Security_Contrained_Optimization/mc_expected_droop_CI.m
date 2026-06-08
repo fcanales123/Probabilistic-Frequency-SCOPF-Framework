@@ -143,7 +143,7 @@ function [MC, results, CI] = mc_expected_droop_CI(mpc, ldc, sampler, mpopt, opts
         [mpc_s, mult, Psys_MW] = sample_loads(mpc_w, ldc, sampler);
         mult_samples(it) = mult;
 
-        % % ---- (1) sample distributed loads + build sampled mpc ----
+        % ---- (1) sample distributed loads + build sampled mpc ----
         % [mpc_s, PD_s_MW, info] = sample_loads_distributed(mpc, ldc, sampler);
         % 
         % % store global draw (from LDC)
@@ -211,8 +211,8 @@ function [MC, results, CI] = mc_expected_droop_CI(mpc, ldc, sampler, mpopt, opts
 
         % ---- optional progress print ----
         if mod(it, opts.print_every) == 0
-            fprintf('MC it=%d (valid=%d): meanE=%.4f, halfCI=%.4g, mult=%.3f, Psys=%.1f MW\n', ...
-                it, n, meanE, half, mult, Psys_MW);
+            fprintf('MC it=%d (valid=%d): meanE=%.4f, halfCI=%.4g\n', ...
+                it, n, meanE, half);
         end
 
         % ---- stopping criterion ----

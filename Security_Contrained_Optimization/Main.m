@@ -1,5 +1,5 @@
 %% --- Global Parameters (Sensitivity Variables) ---
-candidate_buses = [14,15]; % List of positions to explore
+candidate_buses = [14]; % List of positions to explore
 Pgrid_con_values = 900;            % Base size
 alpha_values    = [1.0]; % Grid connection ratio Pgrid=alpha*Pel
 beta_values     = [1.0]; % Electrolysis ratio Pel=beta*Pwind
@@ -35,7 +35,7 @@ sampler.clip_mult = [0.85 1.15];
 sampler.clip_m    = [];        
 sampler.keep_sum  = true;
 sampler.scale_QD  = true;
-mpopt = mpoption('model','DC','opf.dc.solver','MIPS','verbose',0);
+mpopt = mpoption('model','DC','opf.dc.solver','GUROBI','verbose',0);
 opts = struct();
 
 % ---- Monte Carlo stopping & accuracy ----
@@ -104,14 +104,14 @@ for i = 1:length(candidate_buses)
     G_f_wel = mpc.wind_elec.idx'; 
     R_wel   = R_wel_val * ones(size(G_f_wel,1),1);
     
-    mpc.csopf.Gf = [G_f_hydro; G_f_coal1; G_f_coal2; G_f_wel];
-    mpc.csopf.R  = [R_hydro; R_coal1; R_coal2; R_wel];
+    mpc.csopf.Gf = [G_f_hydro; G_f_coal1; G_f_coal2; G_f_wel]; %
+    mpc.csopf.R  = [R_hydro; R_coal1; R_coal2; R_wel]; %
     
     % Define remaining csopf fields (flex_buses, redispatch, costs, etc.)
     mpc.csopf.flex_buses = [];
     mpc.csopf.PLF_max     = [];   
-    mpc.csopf.redispatch_gen_idx = [1,2,5,6,21,22,31,32,G_f_wel'];
-    mpc.csopf.C_RD = [15,15,15,15,16,16,14,14,C_RD_wel];
+    mpc.csopf.redispatch_gen_idx = [1,2,5,6,21,22,31,32,G_f_wel']; %
+    mpc.csopf.C_RD = [15,15,15,15,16,16,14,14,C_RD_wel]; %
     mpc.csopf.C_LS = 1000 * ones(nb,1);
     mpc.csopf.C_LF = 5 * ones(numel(mpc.csopf.flex_buses),1);
 

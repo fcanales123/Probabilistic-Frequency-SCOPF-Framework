@@ -26,7 +26,7 @@ function [ranked_indices, idx, risk, impact, prob] = rank_contingencies(mpc, top
     prob   = zeros(nc, 1);
     risk   = zeros(nc, 1);
 
-    fprintf('Ranking %d contingencies (risk = prob x impact)...\n', nc);
+    % fprintf('Ranking %d contingencies (risk = prob x impact)...\n', nc);
 
     for k = 1:nc
         ck = mpc.csopf.cont(k);
@@ -96,5 +96,5 @@ function [ranked_indices, idx, risk, impact, prob] = rank_contingencies(mpc, top
     [~, idx] = sort(risk, 'descend');
     ranked_indices = idx(1:min(top_n, nc));
 
-    fprintf('Top %d most risky contingencies identified.\n', numel(ranked_indices));
+    % fprintf('Top %d most risky contingencies identified.\n', numel(ranked_indices));
 end
