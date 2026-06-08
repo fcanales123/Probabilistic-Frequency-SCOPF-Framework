@@ -16,6 +16,7 @@ The source code implements:
 ## ⚙️ Requirements
 
 - **MATPOWER v8.0 or later** (required)
+- **Gurobi v13.0.2 o later**  (optional but recommended)
 
 Make sure MATPOWER is installed and added to your MATLAB path:
 
