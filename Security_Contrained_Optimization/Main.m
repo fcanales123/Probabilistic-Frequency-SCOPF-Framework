@@ -191,4 +191,8 @@ end
 
 % --- Final Comparison ---
 disp('Simulation Summary:');
-disp(struct2table(results_log));
+try
+    disp(struct2table(results_log));
+catch
+    disp(struct2table(results_log, 'AsArray', true));
+end
