@@ -19,6 +19,29 @@ G_f_hydro = [25:30]'; R_hydro = 6*ones(size(G_f_hydro,1),1);
 G_f_coal1 = [33]; R_coal1 = 0.8571*ones(size(G_f_coal1,1),1);
 G_f_coal2 = [21;22;31;32]; R_coal2 = 1.9355*ones(size(G_f_coal2,1),1);
 
+% % Generator Indices (Gf) - Column Vectors
+% G_f_oil3 = [16:20]'; 
+% G_f_gas_turbine = [1;2;5;6]; 
+% G_f_hydro = [25:30]'; 
+% G_f_coal3 = [3;4;7;8]; 
+% G_f_oil2 = [9:11]'; 
+% G_f_coal2 = [21;22;31;32]; 
+% G_f_oil1 = [12:14]'; 
+% G_f_coal1 = [33]; 
+% G_f_nuclear = [23;24]; 
+% 
+% % Droop Coefficients (R) - Numerical Values
+% % Based on 5% droop, 60Hz, 100MVA system base
+% R_oil3          = 25.0000 * ones(size(G_f_oil3, 1), 1);          % 12MW gens
+% R_gas_turbine   = 15.0000 * ones(size(G_f_gas_turbine, 1), 1);   % 20MW gens
+% R_hydro         = 6.0000  * ones(size(G_f_hydro, 1), 1);         % 50MW gens
+% R_coal3         = 3.9474  * ones(size(G_f_coal3, 1), 1);         % 76MW gens
+% R_oil2          = 3.0000  * ones(size(G_f_oil2, 1), 1);          % 100MW gens
+% R_coal2         = 1.9355  * ones(size(G_f_coal2, 1), 1);         % 155MW gens
+% R_oil1          = 1.5228  * ones(size(G_f_oil1, 1), 1);          % 197MW gens
+% R_coal1         = 0.8571  * ones(size(G_f_coal1, 1), 1);         % 350MW gens
+% R_nuclear       = 0.7500  * ones(size(G_f_nuclear, 1), 1);       % 400MW gens
+
 % Add static onshore wind
 P_WPP_MW = 200*ones(6,1); wind_buses = [3;5;7;16;21;23]; cost_c1_wind = 0;
 mpc_base = add_wind_gens_from_pu(mpc_base, wind_buses, P_WPP_MW, cost_c1_wind);
