@@ -45,7 +45,7 @@ for x = 1:length(WPP_CAP_loop)
         WPP_CAP = WPP_CAP_loop(x); % Total connected wind farm power in MW
         offshore_distance = offshore_distance_values(y); % Now offshore_distance is a scalar
         
-        [rounded_FCOPT, FCOPT_TM_rounded, WT_States,rounded_w_states,rounded_p_states,farm, perBin, diag, WF_States, WF_transition_matrix, FCOPT, FCOPT_TM] = Wind_Farm_Probabilistic_Modelling(turbine, WPP_CAP, offshore_distance, num_wind_states_partial, num_wind_states_full, num_wind_dir_states, num_rounding_states, offshore_site);
+        [FCOPT,rounded_FCOPT] = Wind_Farm_Probabilistic_Modelling(turbine, WPP_CAP, offshore_distance, num_wind_states_partial, num_wind_states_full, num_wind_dir_states, num_rounding_states, offshore_site);
         
         temp_EWEA(y) = sum(rounded_FCOPT(:,1) .* rounded_FCOPT(:,2));
         temp_Capacity_factor(y) = temp_EWEA(y) / WPP_CAP;
