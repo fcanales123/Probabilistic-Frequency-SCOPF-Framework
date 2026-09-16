@@ -86,5 +86,5 @@ offshore_distance = 100; % Renamed to avoid confusion with the scalar in the loo
 num_rounding_states = 5; % Number of states rounded to in the WF model use 'exact' if no rounding required
 num_wind_states=5; % Number of states rounded to in the WT (wind speed) model
 
-[rounded_FCOPT, FCOPT_TM_rounded, WT_States] = Wind_Farm_Probabilistic_Modelling(turbine, WPP_CAP, offshore_distance, num_wind_states, num_rounding_states);
+[FCOPT,rounded_FCOPT] = Wind_Farm_Probabilistic_Modelling(turbine, WPP_CAP, offshore_distance, num_wind_states_partial, num_wind_states_full, num_wind_dir_states, num_rounding_states, offshore_site);
 
